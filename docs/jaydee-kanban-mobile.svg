@@ -1,0 +1,64 @@
+<svg width="412" height="780" viewBox="0 0 412 780" xmlns="http://www.w3.org/2000/svg" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+<rect width="412" height="780" fill="#F8FAFC"/>
+<rect x="0.5" y="0.5" width="411" height="779" rx="24" fill="none" stroke="#E2E8F0"/>
+<rect x="1" y="1" width="410" height="60" rx="24" fill="#FFFFFF"/>
+<rect x="1" y="36" width="410" height="25" fill="#FFFFFF"/>
+<line x1="1" y1="61" x2="411" y2="61" stroke="#E2E8F0"/>
+<rect x="20" y="16" width="28" height="28" rx="8" fill="#0D9488"/>
+<text x="34" y="35" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">JD</text>
+<text x="56" y="36" font-size="16" font-weight="700" fill="#0F172A">Jaydee</text>
+<circle cx="388" cy="30" r="18" fill="#0D9488"/>
+<text x="388" y="37" font-size="20" font-weight="600" fill="#FFFFFF" text-anchor="middle">+</text>
+<text x="20" y="90" font-size="18" font-weight="700" fill="#0F172A">Tableau de production</text>
+<text x="20" y="110" font-size="12" fill="#64748B">Unité 01  ·  Suivi en temps réel</text>
+<rect x="20" y="128" width="70" height="32" rx="16" fill="#0D9488"/>
+<text x="55" y="148" font-size="12" font-weight="600" fill="#FFFFFF" text-anchor="middle">À faire</text>
+<rect x="98" y="128" width="80" height="32" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+<text x="138" y="148" font-size="12" fill="#475569" text-anchor="middle">En cours</text>
+<rect x="186" y="128" width="92" height="32" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+<text x="232" y="148" font-size="12" fill="#475569" text-anchor="middle">À contrôler</text>
+<rect x="286" y="128" width="74" height="32" rx="16" fill="#FFFFFF" stroke="#E2E8F0"/>
+<text x="323" y="148" font-size="12" fill="#475569" text-anchor="middle">Terminé</text>
+<text x="20" y="190" font-size="13" font-weight="600" fill="#1E293B">À faire</text>
+<text x="72" y="190" font-size="13" fill="#64748B">·  3 tâches à démarrer</text>
+<rect x="20" y="204" width="372" height="104" rx="12" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="20" y="204" width="4" height="104" rx="2" fill="#EF4444"/>
+<rect x="36" y="218" width="66" height="18" rx="9" fill="#FEE2E2"/>
+<text x="69" y="231" font-size="9.5" font-weight="700" fill="#B91C1C" text-anchor="middle" letter-spacing="0.5">CRITIQUE</text>
+<text x="36" y="258" font-size="15" font-weight="600" fill="#1E293B">Boîtier automobile</text>
+<text x="36" y="278" font-size="12" fill="#64748B">OF-1043</text>
+<text x="36" y="296" font-size="11" fill="#64748B">⏱  26 juin</text>
+<circle cx="370" cy="290" r="12" fill="#0F766E"/>
+<text x="370" y="294" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">ML</text>
+<rect x="20" y="320" width="372" height="104" rx="12" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="20" y="320" width="4" height="104" rx="2" fill="#3B82F6"/>
+<rect x="36" y="334" width="68" height="18" rx="9" fill="#DBEAFE"/>
+<text x="70" y="347" font-size="9.5" font-weight="700" fill="#1D4ED8" text-anchor="middle" letter-spacing="0.5">STANDARD</text>
+<text x="36" y="374" font-size="15" font-weight="600" fill="#1E293B">Support châssis S-44</text>
+<text x="36" y="394" font-size="12" fill="#64748B">OF-1051</text>
+<text x="36" y="412" font-size="11" fill="#64748B">⏱  28 juin</text>
+<circle cx="370" cy="406" r="12" fill="#0F766E"/>
+<text x="370" y="410" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">AK</text>
+<rect x="20" y="436" width="372" height="104" rx="12" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="20" y="436" width="4" height="104" rx="2" fill="#F59E0B"/>
+<rect x="36" y="450" width="62" height="18" rx="9" fill="#FEF3C7"/>
+<text x="67" y="463" font-size="9.5" font-weight="700" fill="#B45309" text-anchor="middle" letter-spacing="0.5">ROUTINE</text>
+<text x="36" y="490" font-size="15" font-weight="600" fill="#1E293B">Moule M-202 clavier</text>
+<text x="36" y="510" font-size="12" fill="#64748B">OF-1067</text>
+<text x="36" y="528" font-size="11" fill="#64748B">⏱  30 juin</text>
+<circle cx="370" cy="522" r="12" fill="#0F766E"/>
+<text x="370" y="526" font-size="10" font-weight="600" fill="#FFFFFF" text-anchor="middle">RR</text>
+<rect x="20" y="552" width="372" height="44" rx="12" fill="none" stroke="#CBD5E1" stroke-dasharray="5 4"/>
+<text x="206" y="580" font-size="13" font-weight="500" fill="#64748B" text-anchor="middle">+  Ajouter une tâche</text>
+<rect x="1" y="720" width="410" height="59" rx="24" fill="#FFFFFF"/>
+<rect x="1" y="720" width="410" height="25" fill="#FFFFFF"/>
+<line x1="1" y1="720" x2="411" y2="720" stroke="#E2E8F0"/>
+<rect x="41" y="732" width="20" height="20" rx="6" fill="#0D9488" opacity="1"/>
+<text x="51" y="768" font-size="10" font-weight="600" fill="#0D9488" text-anchor="middle">Tableau</text>
+<rect x="144" y="732" width="20" height="20" rx="6" fill="#94A3B8" opacity="0.5"/>
+<text x="154" y="768" font-size="10" font-weight="400" fill="#94A3B8" text-anchor="middle">Planning</text>
+<rect x="247" y="732" width="20" height="20" rx="6" fill="#94A3B8" opacity="0.5"/>
+<text x="257" y="768" font-size="10" font-weight="400" fill="#94A3B8" text-anchor="middle">Stock</text>
+<rect x="350" y="732" width="20" height="20" rx="6" fill="#94A3B8" opacity="0.5"/>
+<text x="360" y="768" font-size="10" font-weight="400" fill="#94A3B8" text-anchor="middle">Profil</text>
+</svg>

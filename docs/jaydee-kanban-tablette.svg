@@ -1,0 +1,93 @@
+<svg width="768" height="1024" viewBox="0 0 768 1024" xmlns="http://www.w3.org/2000/svg" font-family="Inter, 'Segoe UI', Arial, sans-serif">
+<rect width="768" height="1024" fill="#F8FAFC"/>
+<rect x="0" y="0" width="768" height="60" fill="#FFFFFF"/>
+<line x1="0" y1="60" x2="768" y2="60" stroke="#E2E8F0"/>
+<rect x="24" y="16" width="28" height="28" rx="8" fill="#0D9488"/>
+<text x="38" y="35" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">JD</text>
+<text x="60" y="36" font-size="16" font-weight="700" fill="#0F172A">Jaydee</text>
+<rect x="594" y="14" width="150" height="32" rx="8" fill="#0D9488"/>
+<text x="669" y="35" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">+  Nouvelle tâche</text>
+<text x="24" y="100" font-size="22" font-weight="700" fill="#0F172A">Tableau de production</text>
+<text x="24" y="122" font-size="13" fill="#64748B">Unité 01  ·  Suivi en temps réel  ·  glissez horizontalement →</text>
+<rect x="24" y="150" width="300" height="850" rx="12" fill="#F1F5F9"/>
+<text x="40" y="180" font-size="14" font-weight="600" fill="#334155">À faire</text>
+<rect x="280" y="163" width="28" height="20" rx="10" fill="#E2E8F0"/>
+<text x="294" y="177" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">3</text>
+<rect x="36" y="210" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="36" y="210" width="4" height="104" rx="2" fill="#EF4444"/>
+<rect x="52" y="224" width="66" height="18" rx="9" fill="#FEE2E2"/>
+<text x="85" y="237" font-size="9.5" font-weight="700" fill="#B91C1C" text-anchor="middle" letter-spacing="0.5">CRITIQUE</text>
+<text x="52" y="264" font-size="14" font-weight="600" fill="#1E293B">Boîtier automobile</text>
+<text x="52" y="283" font-size="12" fill="#64748B">OF-1043</text>
+<text x="52" y="301" font-size="11" fill="#64748B">⏱  26 juin</text>
+<circle cx="290" cy="295" r="11" fill="#0F766E"/>
+<text x="290" y="299" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">ML</text>
+<rect x="36" y="328" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="36" y="328" width="4" height="104" rx="2" fill="#3B82F6"/>
+<rect x="52" y="342" width="68" height="18" rx="9" fill="#DBEAFE"/>
+<text x="86" y="355" font-size="9.5" font-weight="700" fill="#1D4ED8" text-anchor="middle" letter-spacing="0.5">STANDARD</text>
+<text x="52" y="382" font-size="14" font-weight="600" fill="#1E293B">Support châssis S-44</text>
+<text x="52" y="401" font-size="12" fill="#64748B">OF-1051</text>
+<text x="52" y="419" font-size="11" fill="#64748B">⏱  28 juin</text>
+<circle cx="290" cy="413" r="11" fill="#0F766E"/>
+<text x="290" y="417" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">AK</text>
+<rect x="36" y="446" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="36" y="446" width="4" height="104" rx="2" fill="#F59E0B"/>
+<rect x="52" y="460" width="62" height="18" rx="9" fill="#FEF3C7"/>
+<text x="83" y="473" font-size="9.5" font-weight="700" fill="#B45309" text-anchor="middle" letter-spacing="0.5">ROUTINE</text>
+<text x="52" y="500" font-size="14" font-weight="600" fill="#1E293B">Moule M-202 clavier</text>
+<text x="52" y="519" font-size="12" fill="#64748B">OF-1067</text>
+<text x="52" y="537" font-size="11" fill="#64748B">⏱  30 juin</text>
+<circle cx="290" cy="531" r="11" fill="#0F766E"/>
+<text x="290" y="535" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">RR</text>
+<rect x="344" y="150" width="300" height="850" rx="12" fill="#F1F5F9"/>
+<text x="360" y="180" font-size="14" font-weight="600" fill="#334155">En cours</text>
+<rect x="600" y="163" width="28" height="20" rx="10" fill="#E2E8F0"/>
+<text x="614" y="177" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">2</text>
+<rect x="356" y="210" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="356" y="210" width="4" height="104" rx="2" fill="#14B8A6"/>
+<rect x="372" y="224" width="68" height="18" rx="9" fill="#CCFBF1"/>
+<text x="406" y="237" font-size="9.5" font-weight="700" fill="#0F766E" text-anchor="middle" letter-spacing="0.5">EN COURS</text>
+<text x="372" y="264" font-size="14" font-weight="600" fill="#1E293B">Couvercle pompe P-05</text>
+<text x="372" y="283" font-size="12" fill="#64748B">OF-1029</text>
+<rect x="372" y="296" width="206" height="5" rx="2.5" fill="#E2E8F0"/>
+<rect x="372" y="296" width="124" height="5" rx="2.5" fill="#0D9488"/>
+<text x="586" y="301" font-size="11" font-weight="600" fill="#0F766E">60%</text>
+<circle cx="610" cy="295" r="11" fill="#0F766E"/>
+<text x="610" y="299" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">RR</text>
+<rect x="356" y="328" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="356" y="328" width="4" height="104" rx="2" fill="#EF4444"/>
+<rect x="372" y="342" width="66" height="18" rx="9" fill="#FEE2E2"/>
+<text x="405" y="355" font-size="9.5" font-weight="700" fill="#B91C1C" text-anchor="middle" letter-spacing="0.5">CRITIQUE</text>
+<text x="372" y="382" font-size="14" font-weight="600" fill="#1E293B">Axe rotatif R-12</text>
+<text x="372" y="401" font-size="12" fill="#64748B">OF-1033</text>
+<rect x="372" y="414" width="206" height="5" rx="2.5" fill="#E2E8F0"/>
+<rect x="372" y="414" width="62" height="5" rx="2.5" fill="#0D9488"/>
+<text x="586" y="419" font-size="11" font-weight="600" fill="#0F766E">30%</text>
+<circle cx="610" cy="413" r="11" fill="#0F766E"/>
+<text x="610" y="417" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">AK</text>
+<rect x="664" y="150" width="300" height="850" rx="12" fill="#F1F5F9"/>
+<text x="680" y="180" font-size="14" font-weight="600" fill="#334155">À contrôler</text>
+<rect x="920" y="163" width="28" height="20" rx="10" fill="#E2E8F0"/>
+<text x="934" y="177" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">2</text>
+<rect x="676" y="210" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="676" y="210" width="4" height="104" rx="2" fill="#F59E0B"/>
+<rect x="692" y="224" width="58" height="18" rx="9" fill="#FEF3C7"/>
+<text x="721" y="237" font-size="9.5" font-weight="700" fill="#B45309" text-anchor="middle" letter-spacing="0.5">QUALITÉ</text>
+<text x="692" y="264" font-size="14" font-weight="600" fill="#1E293B">Vanne de contrôle V-4</text>
+<text x="692" y="283" font-size="12" fill="#64748B">OF-1018</text>
+<text x="692" y="301" font-size="11" fill="#64748B">⏱  auj.</text>
+<circle cx="930" cy="295" r="11" fill="#0F766E"/>
+<text x="930" y="299" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">ML</text>
+<rect x="676" y="328" width="276" height="104" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+<rect x="676" y="328" width="4" height="104" rx="2" fill="#3B82F6"/>
+<rect x="692" y="342" width="94" height="18" rx="9" fill="#DBEAFE"/>
+<text x="739" y="355" font-size="9.5" font-weight="700" fill="#1D4ED8" text-anchor="middle" letter-spacing="0.5">DIMENSIONNEL</text>
+<text x="692" y="382" font-size="14" font-weight="600" fill="#1E293B">Châssis Alu-Z</text>
+<text x="692" y="401" font-size="12" fill="#64748B">OF-1009</text>
+<text x="692" y="419" font-size="11" fill="#64748B">⏱  auj.</text>
+<circle cx="930" cy="413" r="11" fill="#0F766E"/>
+<text x="930" y="417" font-size="9.5" font-weight="600" fill="#FFFFFF" text-anchor="middle">RR</text>
+<defs><linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#F8FAFC" stop-opacity="0"/><stop offset="1" stop-color="#F8FAFC" stop-opacity="0.9"/></linearGradient></defs>
+<rect x="728" y="150" width="40" height="850" fill="url(#fade)"/>
+</svg>

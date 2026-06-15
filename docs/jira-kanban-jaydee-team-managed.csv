@@ -1,0 +1,72 @@
+Issue Type,Summary,Description,Story Points,Labels,Labels,Priority,Start date,Due date
+Story,Conception et modele de donnees,"Analyser le besoin, definir le modele de donnees (entites Colonne et Tache et leurs champs), poser l'architecture en deux parties (API Express + front React) et la structure de dossiers.
+
+Criteres d'acceptation:
+- Les entites Colonne et Tache sont identifiees avec leurs champs (Tache : id, nom, couleur, reference colonne).
+- L'architecture back/front est schematisee.
+- La structure prevue separe routes, controleurs et services.",1,gestion-projet,conception,High,2026-06-08,2026-06-08
+Story,Maquette fonctionnelle Figma,"Maquette du tableau Kanban sous Figma : colonnes du flux + carte de tache, actions visibles (creer, deplacer, consulter), responsive poste fixe et tablette, pensee en composants reutilisables. (Q2)
+
+Criteres d'acceptation:
+- Les colonnes du flux (A faire, En cours, A controler, Termine) sont representees.
+- Une carte de tache affiche le nom et un repere couleur.
+- Une vue desktop et une vue tablette existent.
+- Capture d'ecran exportee pour la feuille.",1,interfaces,Q2,Medium,2026-06-09,2026-06-09
+Story,Initialisation projets Express et React,"Initialiser le back (npm init + Express) et le front (React via Vite), structurer les dossiers, installer les dependances, definir les scripts npm. (Q3)
+
+Criteres d'acceptation:
+- Deux projets distincts initialises.
+- Arborescence avec separation claire des responsabilites.
+- Chaque package.json a ses dependances et un script de demarrage fonctionnel.
+- Capture de l'arborescence + extraits package.json.",1,environnement,Q3,Highest,2026-06-10,2026-06-10
+Story,Verification demarrage et communication,"Demarrer le serveur Express sur son port et l'app React, puis prouver que le front communique avec l'API via un appel de route. (Q4)
+
+Criteres d'acceptation:
+- Le serveur ecoute sur le port configure (visible au terminal).
+- L'app React se lance sans erreur dans le navigateur.
+- Un appel d'une route API depuis le front renvoie une reponse.
+- Captures terminal + navigateur + test de communication.",1,environnement,Q4,High,2026-06-11,2026-06-11
+Story,Composants metier colonne et tache,"Modeles Colonne et Tache (Tache = id unique, nom, couleur, reference colonne), module d'initialisation generant un jeu de taches de demo deterministe, controle minimal de coherence. (Q5)
+
+Criteres d'acceptation:
+- La representation des donnees est separee de la logique d'initialisation.
+- Une tache possede id unique, nom, couleur, reference colonne.
+- Un jeu de demonstration deterministe est genere.
+- Un controle empeche la creation d'objets incomplets.
+- Code complet des modules fourni.",2,composants-metier,Q5,High,2026-06-12,2026-06-15
+Story,Routes API et controleurs,"Route REST renvoyant colonnes + taches en JSON, en s'appuyant sur les composants metier sans dupliquer la logique dans le routage ; separation routes / controleurs. (Q6)
+
+Criteres d'acceptation:
+- La route renvoie colonnes + taches en JSON avec un code HTTP 200.
+- La logique metier est appelee, pas reecrite dans la route.
+- Routes et controleurs sont dans des fichiers separes.
+- Code complet routes + controleurs fourni.",2,composants-metier,Q6,High,2026-06-16,2026-06-17
+Story,Tests unitaires de l'API,"Tests Jest + Supertest sur au moins une route (code HTTP, structure JSON) et au moins un cas d'erreur ; script de test dans package.json. (Q7)
+
+Criteres d'acceptation:
+- Un test verifie le code HTTP et le format des donnees.
+- Au moins un cas d'erreur est couvert.
+- npm test execute la suite.
+- Capture des tests verts.",1,composants-metier,Q7,Medium,2026-06-18,2026-06-18
+Story,Interface React du tableau Kanban,"Composant principal Board chargeant les donnees via appel async, affichage dynamique colonnes + taches, decoupage en composants reutilisables (Board, Column, TaskCard), gestion d'etat y compris erreur API, CSS responsive (police, hauteur, scroll). (Q8)
+
+Criteres d'acceptation:
+- Le Board charge les donnees au montage de maniere asynchrone.
+- Des composants Column et TaskCard reutilisables existent.
+- Un etat d'erreur s'affiche si l'appel API echoue.
+- L'interface est responsive desktop/tablette et gere le defilement.
+- Code des composants + CSS + capture du rendu fournis.",3,interfaces,Q8,High,2026-06-19,2026-06-23
+Story,Securisation et validation de l'API,"Middleware de validation centralise (champs obligatoires, types, valeurs coherentes) execute avant la logique metier ; gestionnaire global d'erreurs renvoyant un code HTTP adapte sans fuite d'info technique ; test de donnees invalides. (Q9)
+
+Criteres d'acceptation:
+- Un middleware valide toute creation/modification de tache.
+- En cas d'erreur, l'API renvoie un code HTTP adapte + un message explicite.
+- Le gestionnaire global ne renvoie aucune stack ni detail technique au client.
+- Un test verifie le rejet de donnees invalides et le bon code HTTP.
+- Code middleware + gestionnaire + tests + capture fournis.",2,composants-metier,Q9,High,2026-06-24,2026-06-25
+Story,Recette et validation finale,"Revue de code, recette fonctionnelle de bout en bout, assemblage et relecture des livrables dans la feuille de travail.
+
+Criteres d'acceptation:
+- Tous les tests passent.
+- Le parcours front vers API fonctionne de bout en bout.
+- Les 9 reponses et leurs captures sont integrees dans le .docx.",1,gestion-projet,recette,Medium,2026-06-26,2026-06-26
