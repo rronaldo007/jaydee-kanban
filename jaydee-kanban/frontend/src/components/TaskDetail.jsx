@@ -1,10 +1,13 @@
-// Panneau de détail d'une tâche (SCRUM-27) + changement de statut (SCRUM-28).
-// S'affiche en volet latéral ; se ferme via le bouton, la touche Échap ou un
-// clic sur le fond. Le sélecteur de colonne déclenche le déplacement (onMove).
-import { useEffect } from 'react';
-import { priorityStyle } from './priority';
+// Panneau de détail d'une tâche (SCRUM-27) avec édition en place :
+// statut/colonne (SCRUM-28), priorité (SCRUM-31), assigné (SCRUM-32).
+// Se ferme via le bouton, la touche Échap ou un clic sur le fond.
+// Toute modification est propagée via onUpdate(task, changes).
+import { useEffect, useState } from 'react';
+import { priorityStyle, PRIORITIES } from './priority';
 
-export default function TaskDetail({ task, columns, onClose, onMove }) {
+export default function TaskDetail({ task, columns, onClose, onUpdate }) {
+  const [assignee, setAssignee] = useState(task.assignee || '');
+
   // Fermeture au clavier (Échap).
   useEffect(() => {
     const onKey = (e) => {
@@ -15,8 +18,15 @@ export default function TaskDetail({ task, columns, onClose, onMove }) {
   }, [onClose]);
 
   const badge = priorityStyle(task.priority);
-  const columnName = columns.find((c) => c.id === task.columnId)?.name || task.columnId;
   const hasProgress = typeof task.progress === 'number';
+
+  // Valide l'assigné s'il a changé (à la perte de focus ou sur Entrée).
+  function commitAssignee() {
+    const value = assignee.trim();
+    if (value !== (task.assignee || '')) {
+      onUpdate(task, { assignee: value || undefined });
+    }
+  }
 
   return (
     <div className="overlay" onClick={onClose}>
@@ -45,24 +55,36 @@ export default function TaskDetail({ task, columns, onClose, onMove }) {
               </dd>
             </>
           )}
-          <dt>Colonne</dt>
-          <dd>{columnName}</dd>
           {task.dueDate && (<><dt>Échéance</dt><dd>⏱ {task.dueDate}</dd></>)}
           {hasProgress && (<><dt>Progression</dt><dd>{task.progress}%</dd></>)}
-          {task.assignee && (<><dt>Assigné</dt><dd>{task.assignee}</dd></>)}
         </dl>
 
-        <div className="detail__move">
-          <label htmlFor="detail-status">Changer de statut</label>
-          <select
-            id="detail-status"
-            value={task.columnId}
-            onChange={(e) => onMove(task, e.target.value)}
-          >
-            {columns.map((c) => (
-              <option key={c.id} value={c.id}>{c.name}</option>
-            ))}
-          </select>
+        <div className="detail__edit">
+          <label className="detail__control">
+            <span>Statut</span>
+            <select value={task.columnId} onChange={(e) => onUpdate(task, { columnId: e.target.value })}>
+              {columns.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </label>
+
+          <label className="detail__control">
+            <span>Priorité</span>
+            <select value={task.priority || ''} onChange={(e) => onUpdate(task, { priority: e.target.value })}>
+              {!task.priority && <option value="">—</option>}
+              {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </label>
+
+          <label className="detail__control">
+            <span>Assigné</span>
+            <input
+              value={assignee}
+              placeholder="Marie Lefèvre"
+              onChange={(e) => setAssignee(e.target.value)}
+              onBlur={commitAssignee}
+              onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); commitAssignee(); } }}
+            />
+          </label>
         </div>
       </aside>
     </div>

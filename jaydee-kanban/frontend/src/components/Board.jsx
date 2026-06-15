@@ -59,25 +59,28 @@ export default function Board({ priorityFilter = 'all', showForm = false, onClos
   const tasksByColumn = (columnId) => visibleTasks.filter((t) => t.columnId === columnId);
   const selectedTask = tasks.find((t) => t.id === selectedId) || null;
 
-  // Déplace une tâche vers une autre colonne (mise à jour optimiste + API).
-  async function handleMove(task, newColumnId) {
-    if (!newColumnId || newColumnId === task.columnId) return;
+  // Applique une modification à une tâche (colonne, priorité, assigné…),
+  // en mise à jour optimiste puis via l'API. Revient en arrière si l'API échoue.
+  async function applyUpdate(task, changes) {
+    const hasChange = Object.keys(changes).some((k) => task[k] !== changes[k]);
+    if (!hasChange) return;
 
     const previous = tasks;
     setActionError(null);
     setTasks((current) =>
-      current.map((t) => (t.id === task.id ? { ...t, columnId: newColumnId } : t))
+      current.map((t) => (t.id === task.id ? { ...t, ...changes } : t))
     );
 
     try {
       await apiUpdateTask(task.id, {
         name: task.name,
         color: task.color,
-        columnId: newColumnId
+        columnId: task.columnId,
+        ...changes
       });
     } catch (e) {
       setTasks(previous); // retour à l'état précédent en cas d'échec
-      setActionError('Le déplacement a échoué. Veuillez réessayer.');
+      setActionError('La mise à jour a échoué. Veuillez réessayer.');
     }
   }
 
@@ -106,10 +109,11 @@ export default function Board({ priorityFilter = 'all', showForm = false, onClos
 
       {selectedTask && (
         <TaskDetail
+          key={selectedTask.id}
           task={selectedTask}
           columns={columns}
           onClose={() => setSelectedId(null)}
-          onMove={handleMove}
+          onUpdate={applyUpdate}
         />
       )}
 

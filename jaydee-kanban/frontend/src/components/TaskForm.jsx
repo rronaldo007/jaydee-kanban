@@ -81,8 +81,8 @@ export default function TaskForm({ columns, onClose, onCreate }) {
           </label>
 
           <label className="form__field">
-            <span>Assigné (initiales)</span>
-            <input value={assignee} onChange={(e) => setAssignee(e.target.value)} placeholder="RR" maxLength={3} />
+            <span>Assigné</span>
+            <input value={assignee} onChange={(e) => setAssignee(e.target.value)} placeholder="Marie Lefèvre" />
           </label>
 
           <div className="form__field">

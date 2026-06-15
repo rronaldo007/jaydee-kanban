@@ -2,6 +2,7 @@
 // Affiche : badge de priorité, nom, référence OF, échéance ou progression,
 // et avatar de l'assigné. Cliquable pour ouvrir le détail (onSelect).
 import { priorityStyle } from './priority';
+import { initials } from './format';
 
 export default function TaskCard({ task, onSelect }) {
   const badge = priorityStyle(task.priority);
@@ -49,7 +50,7 @@ export default function TaskCard({ task, onSelect }) {
 
       {task.assignee && (
         <span className="task-card__avatar" title={task.assignee}>
-          {task.assignee}
+          {initials(task.assignee)}
         </span>
       )}
     </article>

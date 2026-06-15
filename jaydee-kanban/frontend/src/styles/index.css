@@ -355,25 +355,28 @@ body {
 .detail__fields dt { color: var(--muted); font-size: 0.8rem; }
 .detail__fields dd { margin: 0; font-size: 0.85rem; font-weight: 500; }
 
-.detail__move {
+.detail__edit {
   border-top: 1px solid var(--border);
   padding-top: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.detail__move label { font-size: 0.8rem; font-weight: 600; color: var(--slate); }
+.detail__control { display: flex; flex-direction: column; gap: 0.35rem; }
+.detail__control > span { font-size: 0.8rem; font-weight: 600; color: var(--slate); }
 
-.detail__move select {
+.detail__control select,
+.detail__control input {
   padding: 0.5rem 0.6rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.85rem;
   background: var(--surface);
   color: var(--slate);
-  cursor: pointer;
 }
+
+.detail__control select { cursor: pointer; }
 
 /* ---- Formulaire de création ---- */
 .form { display: flex; flex-direction: column; gap: 1rem; }
