@@ -2,10 +2,12 @@
 const express = require('express');
 const router = express.Router();
 const boardController = require('../controllers/board.controller');
+const { validateTask } = require('../middlewares/validate');
 
 // GET /api/board -> colonnes + tâches
 router.get('/', boardController.getBoard);
 
-// (Exercice 9) POST /api/board/tasks -> sera ajouté avec le middleware de validation.
+// POST /api/board/tasks -> crée une tâche après validation (Exercice 9)
+router.post('/tasks', validateTask, boardController.createTask);
 
 module.exports = router;

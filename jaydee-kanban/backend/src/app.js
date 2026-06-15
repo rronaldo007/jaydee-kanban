@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const boardRoutes = require('./routes/board.routes');
+const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
@@ -15,5 +16,15 @@ app.get('/api/health', (req, res) => {
 
 // Routes métier du tableau Kanban.
 app.use('/api/board', boardRoutes);
+
+// 404 : aucune route ne correspond.
+app.use((req, res, next) => {
+  const err = new Error('Ressource introuvable.');
+  err.status = 404;
+  next(err);
+});
+
+// Gestionnaire global d'erreurs (doit rester le dernier middleware).
+app.use(errorHandler);
 
 module.exports = app;
