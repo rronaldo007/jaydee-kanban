@@ -1,64 +1,154 @@
 :root {
   --teal: #0D9488;
-  --ink: #1E293B;
+  --teal-dark: #0F766E;
+  --ink: #0F172A;
+  --slate: #1E293B;
   --muted: #64748B;
-  --bg: #F1F5F9;
+  --bg: #F8FAFC;
+  --col-bg: #F1F5F9;
   --surface: #FFFFFF;
   --border: #E2E8F0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   line-height: 1.5;
 }
 
 * { box-sizing: border-box; }
 
-html, body, #root {
-  height: 100%;
-}
+html, body, #root { height: 100%; }
 
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--ink);
+  color: var(--slate);
 }
 
-/* ---- Mise en page générale ---- */
+/* ---- Layout général ---- */
 .app {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 
-.app__header {
-  padding: 1rem 1.5rem;
+/* ---- Barre de navigation ---- */
+.navbar {
+  flex: 0 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  flex: 0 0 auto;
 }
 
-.app__title {
-  margin: 0;
-  font-size: 1.35rem;
+.navbar__brand { display: flex; align-items: center; gap: 0.6rem; }
+
+.navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
-.app__subtitle {
-  margin: 0.15rem 0 0;
-  color: var(--muted);
-  font-size: 0.9rem;
+.navbar__title { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+
+.navbar__menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+.navbar__link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+
+.navbar__link--active {
+  color: var(--teal);
+  font-weight: 600;
+  border-bottom: 2px solid var(--teal);
+}
+
+.navbar__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__new {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.navbar__new:hover { background: var(--teal-dark); }
+
+.navbar__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* ---- Zone principale ---- */
 .app__main {
   flex: 1 1 auto;
-  min-height: 0;            /* indispensable pour que le défilement interne fonctionne */
-  padding: 1.5rem;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 2rem;
 }
 
-/* ---- Tableau Kanban : colonnes en ligne, défilement horizontal ---- */
+.app__header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.app__title { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+.app__subtitle { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.85rem; }
+
+.app__filter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--slate);
+  cursor: pointer;
+}
+
+/* ---- Tableau Kanban ---- */
 .board {
+  flex: 1 1 auto;
+  min-height: 0;
   display: flex;
   gap: 1rem;
-  height: 100%;
-  overflow-x: auto;         /* défilement horizontal si beaucoup de colonnes */
+  overflow-x: auto;
   padding-bottom: 0.5rem;
 }
 
@@ -66,11 +156,10 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  flex: 0 0 280px;          /* largeur fixe, adaptée poste fixe et tablette */
+  flex: 0 0 329px;
   max-height: 100%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
+  background: var(--col-bg);
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -78,39 +167,34 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 1rem;
   flex: 0 0 auto;
 }
 
-.column__title {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
+.column__title { margin: 0; font-size: 0.9rem; font-weight: 600; color: #334155; }
 
 .column__count {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.5rem;
-  height: 1.5rem;
+  min-width: 28px;
+  height: 20px;
   padding: 0 0.4rem;
-  background: var(--bg);
-  color: var(--muted);
-  border-radius: 999px;
-  font-size: 0.8rem;
+  background: var(--border);
+  color: #475569;
+  border-radius: 10px;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
 .column__tasks {
   flex: 1 1 auto;
   min-height: 0;
-  overflow-y: auto;         /* défilement vertical quand les tâches débordent */
-  padding: 0.75rem;
+  overflow-y: auto;
+  padding: 0 0.75rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
 }
 
 .column__empty {
@@ -124,42 +208,78 @@ body {
 
 /* ---- Carte de tâche ---- */
 .task-card {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.7rem 0.8rem;
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 4px solid var(--teal);   /* la couleur réelle est appliquée en ligne */
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  border-left: 4px solid var(--teal);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
 }
 
-.task-card__dot {
-  flex: 0 0 auto;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.task-card__badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .task-card__name {
+  margin: 0.55rem 0 0.15rem;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--slate);
 }
 
-/* ---- Messages d'état (chargement / erreur) ---- */
-.board__message {
-  padding: 1rem;
-  color: var(--muted);
+.task-card__ref { margin: 0; font-size: 0.75rem; color: var(--muted); }
+
+.task-card__due { margin: 0.5rem 0 0; font-size: 0.72rem; color: var(--muted); }
+
+.task-card__progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
 }
 
-.board__message--error {
-  color: #B91C1C;
+.task-card__progress-track {
+  flex: 1 1 auto;
+  height: 5px;
+  background: var(--border);
+  border-radius: 2.5px;
+  overflow: hidden;
+}
+
+.task-card__progress-bar { height: 100%; background: var(--teal); border-radius: 2.5px; }
+
+.task-card__progress-value { font-size: 0.7rem; font-weight: 600; color: var(--teal-dark); }
+
+.task-card__avatar {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-dark);
+  color: #fff;
+  font-size: 0.6rem;
   font-weight: 600;
 }
 
+/* ---- Messages d'état ---- */
+.board__message { padding: 1rem; color: var(--muted); }
+.board__message--error { color: #B91C1C; font-weight: 600; }
+
 /* ---- Adaptation tablette / petits écrans ---- */
 @media (max-width: 768px) {
+  .navbar { padding: 0 1rem; gap: 1rem; }
+  .navbar__menu { display: none; }
   .app__main { padding: 1rem; }
-  .column { flex-basis: 240px; }
+  .column { flex-basis: 260px; }
 }
