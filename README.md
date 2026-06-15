@@ -1,6 +1,12 @@
 # Jaydee Kanban
 
 Application web interne de suivi des ordres de fabrication (tableau Kanban).
+Back-end Node.js + Express, front-end React (Vite).
+
+## Structure du dépôt
+
+- `jaydee-kanban/` : le projet (back-end, front-end, scripts)
+- `docs/` : livrables (maquettes, exports)
 
 ## Fonctionnalités
 
@@ -8,7 +14,7 @@ Application web interne de suivi des ordres de fabrication (tableau Kanban).
 - Affichage du tableau Kanban en colonnes (À faire, En cours, À contrôler, Terminé) avec compteur par colonne.
 - Cartes enrichies : badge de priorité, nom, référence OF, échéance ou barre de progression, avatar de l'assigné (initiales dérivées du nom).
 - Chargement des données via appel asynchrone à l'API, avec états de chargement et d'erreur.
-- Interface responsive (poste fixe et tablette) avec défilement horizontal/vertical.
+- Interface responsive : poste fixe et tablette (défilement horizontal), mobile (onglets de colonnes + barre de navigation basse).
 
 ### Interactions
 - **Détail d'une tâche** : clic sur une carte pour ouvrir un panneau latéral (fermeture par bouton, Échap ou clic sur le fond).
@@ -35,10 +41,10 @@ Application web interne de suivi des ordres de fabrication (tableau Kanban).
 | `PUT` | `/api/board/tasks/:id` | Modifie une tâche — `200` / `400` / `404` |
 
 ```
-cd backend && npm test   # exécute la suite de tests
+cd jaydee-kanban/backend && npm test   # exécute la suite de tests
 ```
 
-## Architecture
+## Architecture (dans `jaydee-kanban/`)
 
 - `backend/`  : API REST en Node.js + Express (séparation routes / contrôleurs / services / modèles)
 - `frontend/` : interface en React (Vite), structurée en composants réutilisables
@@ -46,9 +52,8 @@ cd backend && npm test   # exécute la suite de tests
 
 ## Démarrage rapide (recommandé)
 
-Depuis la racine du projet, deux scripts lancent tout le monorepo :
-
 ```
+cd jaydee-kanban
 ./scripts/install.sh    # installe les dépendances (racine + backend + frontend)
 ./scripts/start.sh      # démarre l'API et le front en parallèle
 ```
@@ -59,7 +64,7 @@ lance les deux serveurs ensemble (préfixes `API` en bleu, `WEB` en vert) :
 - API Express : http://localhost:3001
 - Front React : http://localhost:5173
 
-Équivalents via npm (depuis la racine) :
+Équivalents via npm (depuis `jaydee-kanban/`) :
 
 ```
 npm run setup       # = ./scripts/install.sh
@@ -71,14 +76,14 @@ npm start           # démarre les deux serveurs (concurrently), sans réinstall
 
 ### Back-end
 ```
-cd backend
+cd jaydee-kanban/backend
 npm install
 npm run dev      # http://localhost:3001
 ```
 
 ### Front-end
 ```
-cd frontend
+cd jaydee-kanban/frontend
 npm install
 npm run dev      # http://localhost:5173
 ```
