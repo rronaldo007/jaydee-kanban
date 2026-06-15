@@ -1,4 +1,5 @@
-// Petites fonctions utilitaires (priorites + formatage)
+// Petites fonctions utilitaires (priorites + formatage + responsive)
+import { useState, useEffect } from 'react';
 
 // couleurs des badges (fond / texte)
 export const PRIORITY_STYLES = {
@@ -26,4 +27,17 @@ export function initials(name) {
   }
   const single = parts[0];
   return single.length <= 3 ? single.toUpperCase() : single.slice(0, 2).toUpperCase();
+}
+
+// vrai quand l'écran est de taille mobile
+export function useIsMobile(query = '(max-width: 640px)') {
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    setIsMobile(mq.matches);
+    return () => mq.removeEventListener('change', handler);
+  }, [query]);
+  return isMobile;
 }

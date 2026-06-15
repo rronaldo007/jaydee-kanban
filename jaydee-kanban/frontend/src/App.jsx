@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import NavBar from './components/NavBar';
 import Board from './components/Board';
+import BottomNav from './components/BottomNav';
 import { PRIORITIES } from './components/utils';
 
 function App() {
@@ -35,8 +36,11 @@ function App() {
           priorityFilter={priorityFilter}
           showForm={showForm}
           onCloseForm={() => setShowForm(false)}
+          onNewTask={() => setShowForm(true)}
         />
       </main>
+
+      <BottomNav />
     </div>
   );
 }

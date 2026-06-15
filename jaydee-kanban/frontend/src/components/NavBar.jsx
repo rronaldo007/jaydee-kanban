@@ -21,7 +21,8 @@ export default function NavBar({ onNewTask }) {
 
       <div className="navbar__actions">
         <button type="button" className="navbar__new" onClick={onNewTask}>
-          + Nouvelle tâche
+          <span className="navbar__new-full">+ Nouvelle tâche</span>
+          <span className="navbar__new-short">+</span>
         </button>
         <span className="navbar__avatar" title="RUKUNDO Ronaldo">RR</span>
       </div>

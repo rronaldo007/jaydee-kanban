@@ -432,10 +432,104 @@ body {
 
 .form__submit:disabled { opacity: 0.6; cursor: default; }
 
-/* ---- Responsive ---- */
+/* ---- Bouton « + » compact (mobile) et barre de navigation basse ---- */
+.navbar__new-short { display: none; }
+
+.bottom-nav { display: none; }
+
+/* ---- Vue mobile : onglets de colonnes ---- */
+.board-mobile {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.col-tabs {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.col-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.col-tab--active { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+.col-tab__count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 0 0.35rem;
+}
+
+.col-tab--active .col-tab__count { background: rgba(255, 255, 255, 0.25); }
+
+.mobile-add {
+  flex: 0 0 auto;
+  border: 1px dashed var(--border);
+  background: var(--surface);
+  color: var(--teal-dark);
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---- Tablette : on garde le défilement horizontal, colonnes plus étroites ---- */
 @media (max-width: 768px) {
   .navbar { padding: 0 1rem; gap: 1rem; }
   .navbar__menu { display: none; }
   .app__main { padding: 1rem; }
   .column { flex-basis: 260px; }
+}
+
+/* ---- Mobile : layout dédié (onglets + barre basse) ---- */
+@media (max-width: 640px) {
+  .navbar__new-full { display: none; }
+  .navbar__new-short { display: inline; }
+  .navbar__new { padding: 0.4rem 0.7rem; font-size: 1rem; }
+  .navbar__avatar { display: none; }
+
+  .app__header { flex-direction: column; gap: 0.6rem; align-items: stretch; }
+  .app__filter { width: 100%; }
+
+  .app__main { padding-bottom: 4.5rem; }   /* laisse la place à la barre basse */
+
+  .board-mobile .column {
+    flex: 1 1 auto;
+    width: 100%;
+    flex-basis: auto;
+    max-height: none;
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 3.5rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    z-index: 40;
+  }
+
+  .bottom-nav__item { font-size: 0.8rem; color: var(--muted); }
+  .bottom-nav__item--active { color: var(--teal); font-weight: 600; }
 }
