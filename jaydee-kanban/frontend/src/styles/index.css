@@ -215,6 +215,18 @@ body {
   border-radius: 10px;
   padding: 0.85rem 1rem;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+  transform: translateY(-1px);
+}
+
+.task-card:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 .task-card__badge {
@@ -275,6 +287,93 @@ body {
 /* ---- Messages d'état ---- */
 .board__message { padding: 1rem; color: var(--muted); }
 .board__message--error { color: #B91C1C; font-weight: 600; }
+
+/* ---- Panneau de détail (volet latéral) ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 50;
+}
+
+.detail {
+  width: 380px;
+  max-width: 90vw;
+  height: 100%;
+  background: var(--surface);
+  box-shadow: -4px 0 20px rgba(15, 23, 42, 0.15);
+  padding: 1.5rem;
+  overflow-y: auto;
+  animation: detail-in 0.15s ease;
+}
+
+@keyframes detail-in {
+  from { transform: translateX(20px); opacity: 0.6; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.detail__header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail__color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.detail__title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  flex: 1 1 auto;
+}
+
+.detail__close {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.detail__fields {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0.6rem 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.detail__fields dt { color: var(--muted); font-size: 0.8rem; }
+.detail__fields dd { margin: 0; font-size: 0.85rem; font-weight: 500; }
+
+.detail__move {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail__move label { font-size: 0.8rem; font-weight: 600; color: var(--slate); }
+
+.detail__move select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: var(--surface);
+  color: var(--slate);
+  cursor: pointer;
+}
 
 /* ---- Adaptation tablette / petits écrans ---- */
 @media (max-width: 768px) {

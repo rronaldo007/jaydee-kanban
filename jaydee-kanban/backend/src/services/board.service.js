@@ -16,9 +16,14 @@ function addTask({ name, color, columnId }) {
   return task;
 }
 
+// Champs d'affichage optionnels conservés lors d'une modification.
+const DISPLAY_FIELDS = ['priority', 'reference', 'dueDate', 'progress', 'assignee'];
+
 // Modifie une tâche existante. Lève une erreur 404 si l'identifiant est inconnu,
-// et délègue la validation des champs au modèle (erreur explicite si incohérent).
-function updateTask(id, { name, color, columnId }) {
+// délègue la validation des champs cœur au modèle, et conserve les champs
+// d'affichage existants (sauf si la requête en fournit de nouveaux). Ainsi un
+// simple changement de colonne ne fait pas perdre la priorité, la référence, etc.
+function updateTask(id, payload = {}) {
   const index = tasks.findIndex((t) => t.id === id);
   if (index === -1) {
     const err = new Error(`Tâche introuvable : ${id}.`);
@@ -26,7 +31,16 @@ function updateTask(id, { name, color, columnId }) {
     throw err;
   }
   const columnIds = columns.map((c) => c.id);
-  const updated = createTask({ id, name, color, columnId }, columnIds);
+  const { name, color, columnId } = payload;
+  const base = createTask({ id, name, color, columnId }, columnIds);
+
+  const existing = tasks[index];
+  const updated = { ...base };
+  for (const field of DISPLAY_FIELDS) {
+    const value = payload[field] !== undefined ? payload[field] : existing[field];
+    if (value !== undefined) updated[field] = value;
+  }
+
   tasks[index] = updated;
   return updated;
 }

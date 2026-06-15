@@ -1,24 +1,26 @@
-// Composant Carte de tâche réutilisable (Exercice 8 / SCRUM-26).
+// Composant Carte de tâche réutilisable (Exercice 8 / SCRUM-26 / SCRUM-27).
 // Affiche : badge de priorité, nom, référence OF, échéance ou progression,
-// et avatar de l'assigné. Les champs d'affichage sont optionnels.
+// et avatar de l'assigné. Cliquable pour ouvrir le détail (onSelect).
+import { priorityStyle } from './priority';
 
-// Couleurs des badges de priorité (fond / texte), alignées sur la maquette.
-const PRIORITY_STYLES = {
-  CRITIQUE: { bg: '#FEE2E2', fg: '#B91C1C' },
-  STANDARD: { bg: '#DBEAFE', fg: '#1D4ED8' },
-  ROUTINE: { bg: '#FEF3C7', fg: '#B45309' },
-  'EN COURS': { bg: '#CCFBF1', fg: '#0F766E' },
-  QUALITÉ: { bg: '#FEF3C7', fg: '#B45309' },
-  DIMENSIONNEL: { bg: '#DBEAFE', fg: '#1D4ED8' },
-  TERMINÉ: { bg: '#DCFCE7', fg: '#15803D' }
-};
-
-export default function TaskCard({ task }) {
-  const badge = PRIORITY_STYLES[task.priority] || { bg: '#E2E8F0', fg: '#475569' };
+export default function TaskCard({ task, onSelect }) {
+  const badge = priorityStyle(task.priority);
   const hasProgress = typeof task.progress === 'number';
 
   return (
-    <article className="task-card" style={{ borderLeftColor: task.color }}>
+    <article
+      className="task-card"
+      style={{ borderLeftColor: task.color }}
+      role="button"
+      tabIndex={0}
+      onClick={() => onSelect && onSelect(task)}
+      onKeyDown={(e) => {
+        if (onSelect && (e.key === 'Enter' || e.key === ' ')) {
+          e.preventDefault();
+          onSelect(task);
+        }
+      }}
+    >
       {task.priority && (
         <span
           className="task-card__badge"

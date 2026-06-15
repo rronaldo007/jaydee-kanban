@@ -1,8 +1,8 @@
 // Composant Colonne réutilisable (Exercice 8).
-// Reçoit une colonne et la liste des tâches qui lui sont associées.
+// Reçoit une colonne, ses tâches, et propage la sélection d'une carte.
 import TaskCard from './TaskCard';
 
-export default function Column({ column, tasks }) {
+export default function Column({ column, tasks, onSelect }) {
   return (
     <section className="column" aria-label={column.name}>
       <header className="column__header">
@@ -14,7 +14,9 @@ export default function Column({ column, tasks }) {
         {tasks.length === 0 ? (
           <p className="column__empty">Aucune tâche</p>
         ) : (
-          tasks.map((task) => <TaskCard key={task.id} task={task} />)
+          tasks.map((task) => (
+            <TaskCard key={task.id} task={task} onSelect={onSelect} />
+          ))
         )}
       </div>
     </section>

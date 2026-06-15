@@ -12,3 +12,14 @@ export async function fetchBoard() {
   if (!res.ok) throw new Error('Erreur lors du chargement du tableau');
   return res.json();
 }
+
+// Met à jour une tâche existante (ex. changement de colonne).
+export async function updateTask(id, body) {
+  const res = await fetch(`${API_URL}/board/tasks/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error('Erreur lors de la mise à jour de la tâche');
+  return res.json();
+}
