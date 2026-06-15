@@ -2,22 +2,35 @@
 const { columns, tasks } = require('../data/seed');
 const { createTask } = require('../models/task');
 
+// Champs d'affichage optionnels (hors validation métier).
+const DISPLAY_FIELDS = ['priority', 'reference', 'dueDate', 'progress', 'assignee'];
+
+// Fusionne les champs d'affichage : valeur de la requête si fournie, sinon valeur existante.
+function withDisplayFields(base, payload, existing = {}) {
+  const result = { ...base };
+  for (const field of DISPLAY_FIELDS) {
+    const value = payload[field] !== undefined ? payload[field] : existing[field];
+    if (value !== undefined) result[field] = value;
+  }
+  return result;
+}
+
 function getBoard() {
   return { columns, tasks };
 }
 
 // Crée une tâche après validation métier (id généré, colonne existante).
-// createTask lève une erreur explicite si les données sont incohérentes.
-function addTask({ name, color, columnId }) {
+// createTask lève une erreur explicite si les données cœur sont incohérentes ;
+// les champs d'affichage fournis sont conservés.
+function addTask(payload = {}) {
+  const { name, color, columnId } = payload;
   const columnIds = columns.map((c) => c.id);
   const nextId = tasks.reduce((max, t) => Math.max(max, t.id), 0) + 1;
-  const task = createTask({ id: nextId, name, color, columnId }, columnIds);
+  const base = createTask({ id: nextId, name, color, columnId }, columnIds);
+  const task = withDisplayFields(base, payload);
   tasks.push(task);
   return task;
 }
-
-// Champs d'affichage optionnels conservés lors d'une modification.
-const DISPLAY_FIELDS = ['priority', 'reference', 'dueDate', 'progress', 'assignee'];
 
 // Modifie une tâche existante. Lève une erreur 404 si l'identifiant est inconnu,
 // délègue la validation des champs cœur au modèle, et conserve les champs
@@ -33,13 +46,7 @@ function updateTask(id, payload = {}) {
   const columnIds = columns.map((c) => c.id);
   const { name, color, columnId } = payload;
   const base = createTask({ id, name, color, columnId }, columnIds);
-
-  const existing = tasks[index];
-  const updated = { ...base };
-  for (const field of DISPLAY_FIELDS) {
-    const value = payload[field] !== undefined ? payload[field] : existing[field];
-    if (value !== undefined) updated[field] = value;
-  }
+  const updated = withDisplayFields(base, payload, tasks[index]);
 
   tasks[index] = updated;
   return updated;

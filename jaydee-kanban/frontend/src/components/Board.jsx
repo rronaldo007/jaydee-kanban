@@ -1,12 +1,18 @@
-// Composant principal du tableau Kanban (Exercice 8 / SCRUM-27 / SCRUM-28).
+// Composant principal du tableau Kanban (Exercice 8 / SCRUM-27 / 28 / 29 / 30).
 // Charge les données via un appel asynchrone, gère l'état (chargement, erreur,
-// données), la sélection d'une tâche (détail) et son déplacement entre colonnes.
+// données), la sélection d'une tâche, son déplacement, le filtre par priorité
+// et la création d'une tâche.
 import { useEffect, useState } from 'react';
-import { fetchBoard, updateTask as apiUpdateTask } from '../api/boardApi';
+import {
+  fetchBoard,
+  updateTask as apiUpdateTask,
+  createTask as apiCreateTask
+} from '../api/boardApi';
 import Column from './Column';
 import TaskDetail from './TaskDetail';
+import TaskForm from './TaskForm';
 
-export default function Board() {
+export default function Board({ priorityFilter = 'all', showForm = false, onCloseForm }) {
   const [columns, setColumns] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [status, setStatus] = useState('loading'); // loading | error | ready
@@ -44,7 +50,13 @@ export default function Board() {
     );
   }
 
-  const tasksByColumn = (columnId) => tasks.filter((t) => t.columnId === columnId);
+  // Filtre par priorité (côté client) avant regroupement par colonne.
+  const visibleTasks =
+    priorityFilter && priorityFilter !== 'all'
+      ? tasks.filter((t) => t.priority === priorityFilter)
+      : tasks;
+
+  const tasksByColumn = (columnId) => visibleTasks.filter((t) => t.columnId === columnId);
   const selectedTask = tasks.find((t) => t.id === selectedId) || null;
 
   // Déplace une tâche vers une autre colonne (mise à jour optimiste + API).
@@ -67,6 +79,12 @@ export default function Board() {
       setTasks(previous); // retour à l'état précédent en cas d'échec
       setActionError('Le déplacement a échoué. Veuillez réessayer.');
     }
+  }
+
+  // Crée une tâche via l'API puis l'ajoute au tableau (l'erreur remonte au formulaire).
+  async function handleCreate(payload) {
+    const created = await apiCreateTask(payload);
+    setTasks((current) => [...current, created]);
   }
 
   return (
@@ -93,6 +111,10 @@ export default function Board() {
           onClose={() => setSelectedId(null)}
           onMove={handleMove}
         />
+      )}
+
+      {showForm && (
+        <TaskForm columns={columns} onClose={onCloseForm} onCreate={handleCreate} />
       )}
     </>
   );

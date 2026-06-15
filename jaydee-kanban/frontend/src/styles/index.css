@@ -375,6 +375,60 @@ body {
   cursor: pointer;
 }
 
+/* ---- Formulaire de création ---- */
+.form { display: flex; flex-direction: column; gap: 1rem; }
+
+.form__field { display: flex; flex-direction: column; gap: 0.35rem; }
+.form__field > span { font-size: 0.8rem; font-weight: 600; color: var(--slate); }
+
+.form__field input,
+.form__field select {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--slate);
+  background: var(--surface);
+}
+
+.form__colors { display: flex; gap: 0.5rem; }
+
+.form__color {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.form__color--active { border-color: var(--ink); outline: 2px solid #fff; outline-offset: -4px; }
+
+.form__error { margin: 0; color: #B91C1C; font-size: 0.8rem; font-weight: 600; }
+
+.form__actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 0.5rem; }
+
+.form__cancel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.form__submit {
+  background: var(--teal);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form__submit:disabled { opacity: 0.6; cursor: default; }
+
 /* ---- Adaptation tablette / petits écrans ---- */
 @media (max-width: 768px) {
   .navbar { padding: 0 1rem; gap: 1rem; }

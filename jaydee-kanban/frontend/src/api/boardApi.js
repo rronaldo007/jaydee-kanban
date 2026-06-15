@@ -13,6 +13,20 @@ export async function fetchBoard() {
   return res.json();
 }
 
+// Crée une tâche via l'API.
+export async function createTask(body) {
+  const res = await fetch(`${API_URL}/board/tasks`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Erreur lors de la création de la tâche');
+  }
+  return res.json();
+}
+
 // Met à jour une tâche existante (ex. changement de colonne).
 export async function updateTask(id, body) {
   const res = await fetch(`${API_URL}/board/tasks/${id}`, {

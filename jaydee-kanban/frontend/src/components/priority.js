@@ -13,3 +13,6 @@ export const PRIORITY_STYLES = {
 export function priorityStyle(priority) {
   return PRIORITY_STYLES[priority] || { bg: '#E2E8F0', fg: '#475569' };
 }
+
+// Liste ordonnée des priorités (formulaire de création, filtre).
+export const PRIORITIES = Object.keys(PRIORITY_STYLES);
