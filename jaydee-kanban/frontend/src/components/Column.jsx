@@ -1,4 +1,22 @@
-// (Exercice 8) Composant Colonne réutilisable.
-export default function Column() {
-  return null;
+// Composant Colonne réutilisable (Exercice 8).
+// Reçoit une colonne et la liste des tâches qui lui sont associées.
+import TaskCard from './TaskCard';
+
+export default function Column({ column, tasks }) {
+  return (
+    <section className="column" aria-label={column.name}>
+      <header className="column__header">
+        <h2 className="column__title">{column.name}</h2>
+        <span className="column__count">{tasks.length}</span>
+      </header>
+
+      <div className="column__tasks">
+        {tasks.length === 0 ? (
+          <p className="column__empty">Aucune tâche</p>
+        ) : (
+          tasks.map((task) => <TaskCard key={task.id} task={task} />)
+        )}
+      </div>
+    </section>
+  );
 }

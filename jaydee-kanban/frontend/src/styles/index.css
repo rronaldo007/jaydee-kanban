@@ -1,11 +1,19 @@
 :root {
   --teal: #0D9488;
   --ink: #1E293B;
-  --bg: #F8FAFC;
-  font-family: Inter, system-ui, Arial, sans-serif;
+  --muted: #64748B;
+  --bg: #F1F5F9;
+  --surface: #FFFFFF;
+  --border: #E2E8F0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
 }
 
 * { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -13,6 +21,145 @@ body {
   color: var(--ink);
 }
 
+/* ---- Mise en page générale ---- */
 .app {
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app__header {
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.app__subtitle {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.app__main {
+  flex: 1 1 auto;
+  min-height: 0;            /* indispensable pour que le défilement interne fonctionne */
+  padding: 1.5rem;
+}
+
+/* ---- Tableau Kanban : colonnes en ligne, défilement horizontal ---- */
+.board {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  overflow-x: auto;         /* défilement horizontal si beaucoup de colonnes */
+  padding-bottom: 0.5rem;
+}
+
+/* ---- Colonne ---- */
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 280px;          /* largeur fixe, adaptée poste fixe et tablette */
+  max-height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.column__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+
+.column__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.column__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  background: var(--bg);
+  color: var(--muted);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.column__tasks {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;         /* défilement vertical quand les tâches débordent */
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.column__empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ---- Carte de tâche ---- */
+.task-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);   /* la couleur réelle est appliquée en ligne */
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.task-card__dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.task-card__name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---- Messages d'état (chargement / erreur) ---- */
+.board__message {
+  padding: 1rem;
+  color: var(--muted);
+}
+
+.board__message--error {
+  color: #B91C1C;
+  font-weight: 600;
+}
+
+/* ---- Adaptation tablette / petits écrans ---- */
+@media (max-width: 768px) {
+  .app__main { padding: 1rem; }
+  .column { flex-basis: 240px; }
 }
