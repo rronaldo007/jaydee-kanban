@@ -1,5 +1,3 @@
-// Composant Colonne réutilisable (Exercice 8).
-// Reçoit une colonne, ses tâches, et propage la sélection d'une carte.
 import TaskCard from './TaskCard';
 
 export default function Column({ column, tasks, onSelect }) {

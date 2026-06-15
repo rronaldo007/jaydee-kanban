@@ -1,6 +1,3 @@
-// Tests de la création de tâche et de la validation (Exercice 9).
-// Vérifie que les données invalides sont rejetées avec le bon code HTTP
-// et qu'une création valide réussit.
 const request = require('supertest');
 const app = require('../src/app');
 
@@ -45,14 +42,13 @@ describe('POST /api/board/tasks — validation', () => {
   it('ne divulgue aucune information technique en cas d\'erreur', async () => {
     const res = await request(app).post('/api/board/tasks').send({});
     expect(res.status).toBe(400);
-    // La réponse ne contient que le message ; aucune stack ni détail interne.
     expect(Object.keys(res.body)).toEqual(['error']);
     expect(res.body).not.toHaveProperty('stack');
-    expect(res.body.error).not.toMatch(/\n\s+at\s/); // pas de trame de pile
+    expect(res.body.error).not.toMatch(/\n\s+at\s/);
   });
 });
 
-describe('PUT /api/board/tasks/:id — modification (SCRUM-25)', () => {
+describe('PUT /api/board/tasks/:id — modification', () => {
   it('modifie une tâche existante (200) et renvoie la version à jour', async () => {
     const res = await request(app)
       .put('/api/board/tasks/1')

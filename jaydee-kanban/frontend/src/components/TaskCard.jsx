@@ -1,8 +1,4 @@
-// Composant Carte de tâche réutilisable (Exercice 8 / SCRUM-26 / SCRUM-27).
-// Affiche : badge de priorité, nom, référence OF, échéance ou progression,
-// et avatar de l'assigné. Cliquable pour ouvrir le détail (onSelect).
-import { priorityStyle } from './priority';
-import { initials } from './format';
+import { priorityStyle, initials } from './utils';
 
 export default function TaskCard({ task, onSelect }) {
   const badge = priorityStyle(task.priority);

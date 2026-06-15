@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import NavBar from './components/NavBar';
 import Board from './components/Board';
-import { PRIORITIES } from './components/priority';
+import { PRIORITIES } from './components/utils';
 
-// Application Kanban Jaydee : barre de navigation + en-tête + tableau.
-// Pilote le filtre par priorité (SCRUM-30) et l'ouverture du formulaire (SCRUM-29).
 function App() {
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [showForm, setShowForm] = useState(false);

@@ -432,7 +432,7 @@ body {
 
 .form__submit:disabled { opacity: 0.6; cursor: default; }
 
-/* ---- Adaptation tablette / petits écrans ---- */
+/* ---- Responsive ---- */
 @media (max-width: 768px) {
   .navbar { padding: 0 1rem; gap: 1rem; }
   .navbar__menu { display: none; }

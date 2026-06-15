@@ -1,6 +1,3 @@
-// Modèle Colonne : représente une étape du flux de production.
-// Intègre un contrôle de cohérence (champs obligatoires).
-
 function createColumn({ id, name } = {}) {
   if (typeof id !== 'string' || id.trim() === '') {
     throw new Error('Colonne invalide : identifiant manquant.');

@@ -1,5 +1,6 @@
-// Couleurs des badges de priorité (fond / texte), alignées sur la maquette.
-// Partagé entre TaskCard et TaskDetail.
+// Petites fonctions utilitaires (priorites + formatage)
+
+// couleurs des badges (fond / texte)
 export const PRIORITY_STYLES = {
   CRITIQUE: { bg: '#FEE2E2', fg: '#B91C1C' },
   STANDARD: { bg: '#DBEAFE', fg: '#1D4ED8' },
@@ -14,5 +15,15 @@ export function priorityStyle(priority) {
   return PRIORITY_STYLES[priority] || { bg: '#E2E8F0', fg: '#475569' };
 }
 
-// Liste ordonnée des priorités (formulaire de création, filtre).
 export const PRIORITIES = Object.keys(PRIORITY_STYLES);
+
+// "Marie Lefèvre" -> "ML"
+export function initials(name) {
+  if (!name) return '';
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  const single = parts[0];
+  return single.length <= 3 ? single.toUpperCase() : single.slice(0, 2).toUpperCase();
+}

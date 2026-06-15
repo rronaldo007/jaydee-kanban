@@ -1,4 +1,3 @@
-// Barre de navigation supérieure (SCRUM-26) — alignée sur la maquette.
 const LINKS = ['Tableau de production', 'Planification', 'Maintenance', 'Inventaire'];
 
 export default function NavBar({ onNewTask }) {

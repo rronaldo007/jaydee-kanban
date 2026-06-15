@@ -1,6 +1,3 @@
-// Tests automatisés de la route GET /api/board (Exercice 7).
-// On vérifie : le code HTTP, le format des données retournées et la
-// gestion des erreurs (route inexistante).
 const request = require('supertest');
 const app = require('../src/app');
 
@@ -31,7 +28,6 @@ describe('GET /api/board', () => {
         columnId: expect.any(String)
       })
     );
-    // Toute tâche référence une colonne existante.
     const columnIds = res.body.columns.map((c) => c.id);
     res.body.tasks.forEach((t) => {
       expect(columnIds).toContain(t.columnId);

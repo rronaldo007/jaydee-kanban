@@ -1,14 +1,10 @@
-// Panneau de détail d'une tâche (SCRUM-27) avec édition en place :
-// statut/colonne (SCRUM-28), priorité (SCRUM-31), assigné (SCRUM-32).
-// Se ferme via le bouton, la touche Échap ou un clic sur le fond.
-// Toute modification est propagée via onUpdate(task, changes).
 import { useEffect, useState } from 'react';
-import { priorityStyle, PRIORITIES } from './priority';
+import { priorityStyle, PRIORITIES } from './utils';
 
 export default function TaskDetail({ task, columns, onClose, onUpdate }) {
   const [assignee, setAssignee] = useState(task.assignee || '');
 
-  // Fermeture au clavier (Échap).
+  // fermeture avec Échap
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
@@ -20,7 +16,6 @@ export default function TaskDetail({ task, columns, onClose, onUpdate }) {
   const badge = priorityStyle(task.priority);
   const hasProgress = typeof task.progress === 'number';
 
-  // Valide l'assigné s'il a changé (à la perte de focus ou sur Entrée).
   function commitAssignee() {
     const value = assignee.trim();
     if (value !== (task.assignee || '')) {

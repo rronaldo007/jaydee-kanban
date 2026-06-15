@@ -1,7 +1,5 @@
-// Formulaire de création d'une tâche (SCRUM-29).
-// Volet latéral cohérent avec la maquette ; soumet via onCreate (POST API).
 import { useEffect, useState } from 'react';
-import { PRIORITIES } from './priority';
+import { PRIORITIES } from './utils';
 
 const COLORS = ['#EF4444', '#3B82F6', '#F59E0B', '#14B8A6', '#22C55E'];
 

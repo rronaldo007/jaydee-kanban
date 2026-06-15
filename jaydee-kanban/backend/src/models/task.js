@@ -1,7 +1,3 @@
-// Modèle Tâche : carte du tableau Kanban.
-// Chaque tâche a : un identifiant unique, un nom, une couleur, une colonne.
-// La fonction valide la cohérence des données avant de créer l'objet.
-
 const HEX_COLOR = /^#[0-9A-Fa-f]{6}$/;
 
 function createTask({ id, name, color, columnId } = {}, validColumnIds = []) {

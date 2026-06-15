@@ -1,11 +1,4 @@
-// Couche d'accès à l'API (appels asynchrones).
 const API_URL = '/api';
-
-export async function checkHealth() {
-  const res = await fetch(`${API_URL}/health`);
-  if (!res.ok) throw new Error('API injoignable');
-  return res.json();
-}
 
 export async function fetchBoard() {
   const res = await fetch(`${API_URL}/board`);
@@ -13,7 +6,6 @@ export async function fetchBoard() {
   return res.json();
 }
 
-// Crée une tâche via l'API.
 export async function createTask(body) {
   const res = await fetch(`${API_URL}/board/tasks`, {
     method: 'POST',
@@ -27,7 +19,6 @@ export async function createTask(body) {
   return res.json();
 }
 
-// Met à jour une tâche existante (ex. changement de colonne).
 export async function updateTask(id, body) {
   const res = await fetch(`${API_URL}/board/tasks/${id}`, {
     method: 'PUT',

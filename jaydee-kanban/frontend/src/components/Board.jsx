@@ -1,7 +1,3 @@
-// Composant principal du tableau Kanban (Exercice 8 / SCRUM-27 / 28 / 29 / 30).
-// Charge les données via un appel asynchrone, gère l'état (chargement, erreur,
-// données), la sélection d'une tâche, son déplacement, le filtre par priorité
-// et la création d'une tâche.
 import { useEffect, useState } from 'react';
 import {
   fetchBoard,
@@ -15,7 +11,7 @@ import TaskForm from './TaskForm';
 export default function Board({ priorityFilter = 'all', showForm = false, onCloseForm }) {
   const [columns, setColumns] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [status, setStatus] = useState('loading'); // loading | error | ready
+  const [status, setStatus] = useState('loading');
   const [selectedId, setSelectedId] = useState(null);
   const [actionError, setActionError] = useState(null);
 
@@ -50,7 +46,6 @@ export default function Board({ priorityFilter = 'all', showForm = false, onClos
     );
   }
 
-  // Filtre par priorité (côté client) avant regroupement par colonne.
   const visibleTasks =
     priorityFilter && priorityFilter !== 'all'
       ? tasks.filter((t) => t.priority === priorityFilter)
@@ -59,8 +54,7 @@ export default function Board({ priorityFilter = 'all', showForm = false, onClos
   const tasksByColumn = (columnId) => visibleTasks.filter((t) => t.columnId === columnId);
   const selectedTask = tasks.find((t) => t.id === selectedId) || null;
 
-  // Applique une modification à une tâche (colonne, priorité, assigné…),
-  // en mise à jour optimiste puis via l'API. Revient en arrière si l'API échoue.
+  // mise à jour optimiste, on revient en arrière si l'API échoue
   async function applyUpdate(task, changes) {
     const hasChange = Object.keys(changes).some((k) => task[k] !== changes[k]);
     if (!hasChange) return;
@@ -79,12 +73,11 @@ export default function Board({ priorityFilter = 'all', showForm = false, onClos
         ...changes
       });
     } catch (e) {
-      setTasks(previous); // retour à l'état précédent en cas d'échec
+      setTasks(previous);
       setActionError('La mise à jour a échoué. Veuillez réessayer.');
     }
   }
 
-  // Crée une tâche via l'API puis l'ajoute au tableau (l'erreur remonte au formulaire).
   async function handleCreate(payload) {
     const created = await apiCreateTask(payload);
     setTasks((current) => [...current, created]);

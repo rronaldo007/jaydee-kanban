@@ -1,12 +1,6 @@
-// Logique d'initialisation : génère les colonnes et un jeu de tâches de démo.
-// Les champs cœur (id, nom, couleur, colonne) passent par le modèle, donc la
-// cohérence est validée au démarrage. Des champs d'affichage optionnels
-// (priorité, référence OF, échéance, progression, assigné) enrichissent les cartes.
-
 const { createColumn } = require('../models/column');
 const { createTask } = require('../models/task');
 
-// Colonnes du flux de production.
 const columns = [
   createColumn({ id: 'todo', name: 'À faire' }),
   createColumn({ id: 'doing', name: 'En cours' }),
@@ -16,7 +10,6 @@ const columns = [
 
 const columnIds = columns.map((c) => c.id);
 
-// Données de démonstration brutes (cœur + champs d'affichage).
 const demoTasks = [
   { id: 1, name: 'Boîtier automobile', color: '#EF4444', columnId: 'todo', priority: 'CRITIQUE', reference: 'OF-1043', dueDate: '26 juin', assignee: 'ML' },
   { id: 2, name: 'Support châssis S-44', color: '#3B82F6', columnId: 'todo', priority: 'STANDARD', reference: 'OF-1051', dueDate: '28 juin', assignee: 'AK' },
@@ -29,14 +22,12 @@ const demoTasks = [
   { id: 9, name: 'Joint torique J-08', color: '#22C55E', columnId: 'done', priority: 'TERMINÉ', reference: 'OF-0991', dueDate: '23 juin', assignee: 'ML' }
 ];
 
-// Contrôle de cohérence : identifiants uniques + validation par le modèle.
 const seenIds = new Set();
 const tasks = demoTasks.map((raw) => {
   if (seenIds.has(raw.id)) {
     throw new Error(`Identifiant de tâche dupliqué : ${raw.id}.`);
   }
   seenIds.add(raw.id);
-  // createTask valide les champs cœur ; on conserve les champs d'affichage.
   const base = createTask(raw, columnIds);
   return {
     ...base,
