@@ -16,3 +16,15 @@ exports.createTask = (req, res, next) => {
     next(badRequest(e.message));
   }
 };
+
+exports.updateTask = (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    const task = boardService.updateTask(id, req.body);
+    res.status(200).json(task);
+  } catch (e) {
+    // Erreur déjà qualifiée (ex. 404) transmise telle quelle ;
+    // sinon erreur de validation métier => 400.
+    next(e.status ? e : badRequest(e.message));
+  }
+};

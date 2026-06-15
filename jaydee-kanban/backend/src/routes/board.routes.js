@@ -10,4 +10,7 @@ router.get('/', boardController.getBoard);
 // POST /api/board/tasks -> crée une tâche après validation (Exercice 9)
 router.post('/tasks', validateTask, boardController.createTask);
 
+// PUT /api/board/tasks/:id -> modifie une tâche après validation (SCRUM-25)
+router.put('/tasks/:id', validateTask, boardController.updateTask);
+
 module.exports = router;

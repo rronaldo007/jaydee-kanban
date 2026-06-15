@@ -16,4 +16,19 @@ function addTask({ name, color, columnId }) {
   return task;
 }
 
-module.exports = { getBoard, addTask };
+// Modifie une tâche existante. Lève une erreur 404 si l'identifiant est inconnu,
+// et délègue la validation des champs au modèle (erreur explicite si incohérent).
+function updateTask(id, { name, color, columnId }) {
+  const index = tasks.findIndex((t) => t.id === id);
+  if (index === -1) {
+    const err = new Error(`Tâche introuvable : ${id}.`);
+    err.status = 404;
+    throw err;
+  }
+  const columnIds = columns.map((c) => c.id);
+  const updated = createTask({ id, name, color, columnId }, columnIds);
+  tasks[index] = updated;
+  return updated;
+}
+
+module.exports = { getBoard, addTask, updateTask };
