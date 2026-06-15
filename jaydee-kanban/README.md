@@ -2,6 +2,42 @@
 
 Application web interne de suivi des ordres de fabrication (tableau Kanban).
 
+## Fonctionnalités
+
+### Tableau & cartes
+- Affichage du tableau Kanban en colonnes (À faire, En cours, À contrôler, Terminé) avec compteur par colonne.
+- Cartes enrichies : badge de priorité, nom, référence OF, échéance ou barre de progression, avatar de l'assigné (initiales dérivées du nom).
+- Chargement des données via appel asynchrone à l'API, avec états de chargement et d'erreur.
+- Interface responsive (poste fixe et tablette) avec défilement horizontal/vertical.
+
+### Interactions
+- **Détail d'une tâche** : clic sur une carte pour ouvrir un panneau latéral (fermeture par bouton, Échap ou clic sur le fond).
+- **Déplacement** : changer le statut d'une tâche d'une colonne à l'autre.
+- **Création** : bouton « + Nouvelle tâche » → formulaire (nom, couleur, colonne, priorité, référence, assigné).
+- **Édition** : changer la priorité et l'assigné (nom complet) depuis le détail.
+- **Filtre** : filtrer les cartes par priorité ; les compteurs reflètent le filtre.
+- Mises à jour optimistes avec retour arrière et message en cas d'échec de l'API.
+
+### Back-end (API sécurisée)
+- Modèles métier (Colonne, Tâche) avec contrôle de cohérence (id unique, nom, couleur hexadécimale, colonne existante).
+- Jeu de données de démonstration validé au démarrage.
+- Middleware de validation centralisé sur la création/modification de tâche.
+- Gestionnaire global d'erreurs renvoyant un code HTTP adapté, sans fuite d'information technique.
+- Tests automatisés (Jest + Supertest) couvrant les routes et les cas d'erreur.
+
+## API
+
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `GET` | `/api/health` | État du service (test de communication) |
+| `GET` | `/api/board` | Colonnes + tâches au format JSON |
+| `POST` | `/api/board/tasks` | Crée une tâche (validée) — `201` / `400` |
+| `PUT` | `/api/board/tasks/:id` | Modifie une tâche — `200` / `400` / `404` |
+
+```
+cd backend && npm test   # exécute la suite de tests
+```
+
 ## Architecture
 
 - `backend/`  : API REST en Node.js + Express (séparation routes / contrôleurs / services / modèles)
