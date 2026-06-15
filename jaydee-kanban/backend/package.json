@@ -1,0 +1,20 @@
+{
+  "name": "jaydee-kanban-backend",
+  "version": "1.0.0",
+  "description": "API Express du tableau Kanban interne de l'entreprise Jaydee",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "keywords": ["kanban", "express", "api"],
+  "author": "Rukundo Ronaldo",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

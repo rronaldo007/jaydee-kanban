@@ -1,0 +1,18 @@
+:root {
+  --teal: #0D9488;
+  --ink: #1E293B;
+  --bg: #F8FAFC;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app {
+  padding: 2rem;
+}
