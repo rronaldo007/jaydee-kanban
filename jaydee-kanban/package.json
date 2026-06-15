@@ -1,0 +1,16 @@
+{
+  "name": "jaydee-kanban",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Application Kanban interne Jaydee (monorepo back-end + front-end)",
+  "scripts": {
+    "start": "concurrently -n API,WEB -c blue,green \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev": "npm start",
+    "install:all": "npm install && npm --prefix backend install && npm --prefix frontend install",
+    "setup": "bash scripts/install.sh",
+    "start:sh": "bash scripts/start.sh"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
